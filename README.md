@@ -1,0 +1,3 @@
+# GitTogether
+
+TODO: App description...
