@@ -14,13 +14,65 @@ datasource db {
 }
 
 model User {
-  id                     String  @id @default(uuid())
+  id                     String    @id @default(uuid())
   name                   String
-  email                  String  @unique
+  email                  String    @unique
   password               String
-  remainingLoginAttempts Int     @default(5)
   profilePic             String
+  bio                    String
+  remainingLoginAttempts Int       @default(5)
+  linkedIn               String
+  github                 String
+  degree                 String
+  university             String
+  skills                 String[]
+  gender                 Gender
+  projects               Project[] @relation("ProjectMembers")
+  reviews                Review[]  @relation("Reviewer")
+  reviewsReceived        Review[]  @relation("Reviewee")
+  dms                    Dm[]
+  messages               Message[]
+  preference             Gender
+  friends                User[]    @relation("friends")
+  friendOf               User[]    @relation("friends")
   tokens                 Token[]
+}
+
+model Project {
+  id             String   @id @default(uuid())
+  name           String
+  description    String
+  capacity       Int
+  availableSlots Int
+  picture        String
+  technologies   String[]
+  members        User[]   @relation("ProjectMembers")
+}
+
+model Review {
+  id         String @id @default(uuid())
+  comment    String
+  reviewer   User   @relation(fields: [reviewerId], references: [id], onDelete: Cascade, "Reviewer")
+  reviewerId String
+  reviewee   User   @relation(fields: [revieweeId], references: [id], onDelete: Cascade, "Reviewee")
+  revieweeId String
+}
+
+model Dm {
+  id       String    @id @default(uuid())
+  name     String
+  users    User[]
+  messages Message[]
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  message   String
+  timestamp DateTime @default(now())
+  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  senderId  String
+  dm        Dm       @relation(fields: [dmId], references: [id], onDelete: Cascade)
+  dmId      String
 }
 
 model Token {
@@ -29,4 +81,11 @@ model Token {
   refreshToken String @unique
   userId       String
   user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  NONE
 }
