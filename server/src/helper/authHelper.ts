@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function checkEmailExists(email: string): Promise<boolean> {
-  const res = await prisma.user.findFirst({
+  const res = await prisma.user.findUnique({
     where: {
       email: email
     }
@@ -13,8 +13,18 @@ export async function checkEmailExists(email: string): Promise<boolean> {
   if (res === null) return false; else return true;
 }
 
+export async function checkUsernameExists(username: string): Promise<boolean> {
+  const res = await prisma.user.findUnique({
+    where: {
+      username: username
+    }
+  }).catch(e => { console.error(e.message) })
+
+  if (res === null) return false; else return true;
+}
+
 export async function verifyLogin(email: string, password: string): Promise<boolean> {
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: {
       email: email
     }
