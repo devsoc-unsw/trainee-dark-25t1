@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Denk+One&family=Kavoon&family=Rationale&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -8,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-homepeage: "Kavoon", "serif";
 
   /* App Colours */
   --color-app-primary: #ffdd00;

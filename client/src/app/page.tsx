@@ -19,19 +19,20 @@
 
 "use client";
 import { Button } from "@/components/ui/button";
-import { PlusCircleIcon } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import homeImg from "./assets/homepage_pic.jpg"
+import './globals.css'
 export default function Home() {
   return (
     <main className= "flex flex-col items-center">
       <Navbar />
       <img src={homeImg.src} alt="picture-of-people-working-together" className="h-140 mt-15 opacity-30 w-screen"/>
-      <div className="bg-yellow-400 text-black w-120 text-center p-10 relative bottom-90 rounded-xl">
-        <h1 className = "text-3xl font-bold">Welcome to WorkBuddy!</h1>
+      <div className="bg-yellow-400 text-black w-150 text-center p-10 relative bottom-90 rounded-xl">
+        <h1 className = "text-4xl font-bold font-homepeage">Welcome to WorkBuddy!</h1>
         <br />
-        <p className="font-semibold">The perfect place to find someone to work with</p>
+        <p className="font-homepeage text-l">The perfect place to find someone to work with</p>
       </div>
+      <Button className="bg-yellow-400 text-xl text-black px-15 py-9 w-90 relative bottom-20 font-homepeage hover:bg-white">Click here to get started</Button>
     </main>
   );
 }
