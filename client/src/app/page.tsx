@@ -19,20 +19,28 @@
 
 "use client";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
+import AuthenticatedUserNavbar from "@/components/AuthenticatedUserNavbar";
 import homeImg from "./assets/homepage_pic.jpg"
+import GuestUserNavbar from "@/components/GuestUserNavbar";
+import Image from 'next/image'
 import './globals.css'
 export default function Home() {
   return (
     <main className= "flex flex-col items-center">
-      <Navbar />
-      <img src={homeImg.src} alt="picture-of-people-working-together" className="h-140 mt-15 opacity-30 w-screen"/>
+      <AuthenticatedUserNavbar />
+      <Image
+      src={homeImg}
+      alt="picture-of-people-working-together"
+      height={140}
+      width={100}
+      className="h-140 mt-15 opacity-30 w-screen"
+      />
       <div className="bg-yellow-400 text-black w-150 text-center p-10 relative bottom-90 rounded-xl">
-        <h1 className = "text-4xl font-bold font-homepeage">Welcome to WorkBuddy!</h1>
+        <h1 className = "text-4xl font-bold font-homepage">Welcome to WorkBuddy!</h1>
         <br />
-        <p className="font-homepeage text-l">The perfect place to find someone to work with</p>
+        <p className="font-homepage text-l">The perfect place to find someone to work with</p>
       </div>
-      <Button className="bg-yellow-400 text-xl text-black px-15 py-9 w-90 relative bottom-20 font-homepeage hover:bg-white">Click here to get started</Button>
+      <Button className="yellow-button cursor-pointer text-xl text-black px-15 py-9 relative bottom-20 font-homepage hover:bg-white">Click here to get started</Button>
     </main>
   );
 }
