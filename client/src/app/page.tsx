@@ -32,7 +32,7 @@ export default function Home() {
       src={homeImg}
       alt="picture-of-people-working-together"
       height={140}
-      width={100}
+      width={200}
       className="h-140 mt-15 opacity-30 w-screen"
       />
       <div className="bg-yellow-400 text-black w-150 text-center p-10 relative bottom-90 rounded-xl">
